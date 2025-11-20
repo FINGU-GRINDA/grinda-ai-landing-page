@@ -1,0 +1,26 @@
+/* Animation Utilities */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    /* will-change는 is-visible일 때만 적용하여 성능 최적화 */
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateZ(0); /* GPU 가속 활성화 */
+    will-change: auto; /* 애니메이션 완료 후 will-change 제거 */
+}
+
+/* Staggered delays if needed */
+.delay-100 {
+    transition-delay: 100ms;
+}
+
+.delay-200 {
+    transition-delay: 200ms;
+}
+
+.delay-300 {
+    transition-delay: 300ms;
+}

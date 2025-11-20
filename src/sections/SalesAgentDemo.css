@@ -1,0 +1,403 @@
+.sales-agent-demo {
+    background-color: #0B0F19; /* Deep dark background */
+    color: #FFFFFF;
+    padding: 140px 0 120px;
+    position: relative;
+    overflow: hidden;
+    margin-top: -20px; /* Hero와의 자연스러운 연결 */
+}
+
+.demo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header Styles */
+.demo-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.demo-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+}
+
+.demo-subtitle {
+    font-size: 1.1rem;
+    color: #94A3B8;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Navigation Styles */
+.demo-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-pills {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.5rem;
+    border-radius: 2rem;
+    gap: 0.5rem;
+}
+
+.nav-pill {
+    padding: 0.75rem 1.5rem;
+    border-radius: 1.5rem;
+    color: #94A3B8;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.nav-pill:hover {
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-pill.active {
+    background: #1E293B;
+    color: #60A5FA;
+    border-color: rgba(96, 165, 250, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-demo-request {
+    padding: 0.75rem 1.5rem;
+    background: #3B82F6;
+    color: white;
+    border-radius: 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid #3B82F6;
+}
+
+.btn-demo-request:hover {
+    background: #2563EB;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* Browser Mockup Styles */
+.demo-browser-mockup {
+    width: 100%;
+    max-width: 1100px;
+    background: #1E293B;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideUp 0.8s ease-out;
+}
+
+.browser-header {
+    background: #0F172A;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.browser-dots {
+    display: flex;
+    gap: 0.5rem;
+    margin-right: 1.5rem;
+}
+
+.browser-dots span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #334155;
+}
+
+.browser-dots span:nth-child(1) { background: #EF4444; }
+.browser-dots span:nth-child(2) { background: #F59E0B; }
+.browser-dots span:nth-child(3) { background: #10B981; }
+
+.browser-address-bar {
+    flex: 1;
+    background: #1E293B;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    color: #64748B;
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+.browser-content {
+    background: #0F172A;
+    min-height: 600px;
+    position: relative;
+}
+
+.split-view {
+    display: flex;
+    height: 600px;
+}
+
+.view-pane {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.view-divider {
+    width: 1px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.pane-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748B;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+/* Demo Internal UI Components */
+.demo-panel-content {
+    flex: 1;
+    background: #1E293B;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.panel-header h4 {
+    color: #F1F5F9;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    background: rgba(59, 130, 246, 0.1);
+    color: #60A5FA;
+    font-weight: 600;
+}
+
+.badge.success {
+    background: rgba(16, 185, 129, 0.1);
+    color: #34D399;
+}
+
+.badge.warning {
+    background: rgba(245, 158, 11, 0.1);
+    color: #FBBF24;
+}
+
+/* List Item Style */
+.list-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 0.5rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.list-item.active {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+.list-item .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #334155;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F1F5F9;
+    font-weight: 700;
+    margin-right: 1rem;
+}
+
+.list-item .info {
+    flex: 1;
+}
+
+.list-item .name {
+    color: #F1F5F9;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.list-item .sub {
+    color: #64748B;
+    font-size: 0.8rem;
+}
+
+.list-item .score {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #60A5FA;
+}
+
+/* Insight Card Style */
+.insight-card {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.insight-card .label {
+    color: #64748B;
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+}
+
+.insight-card .value {
+    color: #F1F5F9;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.insight-card .desc {
+    color: #94A3B8;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Email Preview Style */
+.email-preview {
+    background: #FFFFFF;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    color: #1E293B;
+}
+
+.email-subject {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.email-body p {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.ai-suggestion {
+    margin-top: 1.5rem;
+    background: #EFF6FF;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.85rem;
+    color: #2563EB;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Stats Style */
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-label { color: #94A3B8; }
+.stat-value { 
+    color: #F1F5F9; 
+    font-weight: 700; 
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.up { color: #34D399; font-size: 0.8rem; }
+
+.chart-placeholder {
+    margin-top: 2rem;
+    height: 150px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.bar {
+    width: 40px;
+    background: #334155;
+    border-radius: 4px 4px 0 0;
+    transition: height 0.5s;
+}
+
+.bar.active {
+    background: #3B82F6;
+}
+
+.flex-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #64748B;
+}
+
+.loading-spinner {
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: #3B82F6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .demo-title { font-size: 2rem; }
+    .split-view { flex-direction: column; height: auto; }
+    .view-divider { width: 100%; height: 1px; margin: 1rem 0; }
+    .browser-content { min-height: auto; }
+    .nav-pills { overflow-x: auto; width: 100%; }
+    .nav-pill { white-space: nowrap; }
+}
+

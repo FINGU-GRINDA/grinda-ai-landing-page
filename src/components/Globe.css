@@ -1,0 +1,419 @@
+.globe-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1200px;
+    perspective-origin: center center;
+}
+
+.globe-wrapper {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    transform-style: preserve-3d;
+    animation: rotateGlobe 20s linear infinite;
+}
+
+@keyframes rotateGlobe {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+.globe-sphere {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+/* 지구본 그리드 */
+.globe-grid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 210px;
+    height: 210px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    transform-style: preserve-3d;
+}
+
+.latitude-line {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(37, 99, 235, 0.3),
+        rgba(37, 99, 235, 0.3),
+        transparent
+    );
+    top: calc((var(--index) * 100% / 11));
+    border-radius: 50%;
+    transform: rotateX(calc((var(--index) - 5.5) * 15deg));
+}
+
+.longitude-line {
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(37, 99, 235, 0.3),
+        rgba(37, 99, 235, 0.3),
+        transparent
+    );
+    left: calc((var(--index) * 100% / 23));
+    border-radius: 50%;
+    transform: rotateY(calc((var(--index) - 11.5) * 15deg));
+}
+
+/* 대륙 윤곽 */
+.continents {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 210px;
+    height: 210px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    transform-style: preserve-3d;
+}
+
+.continent {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.15);
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    transform-style: preserve-3d;
+}
+
+.continent.asia {
+    width: 60px;
+    height: 80px;
+    top: 20%;
+    left: 60%;
+    transform: translate(-50%, -50%) rotateY(-20deg);
+}
+
+.continent.americas {
+    width: 50px;
+    height: 100px;
+    top: 30%;
+    left: 20%;
+    transform: translate(-50%, -50%) rotateY(20deg);
+}
+
+.continent.europe {
+    width: 40px;
+    height: 50px;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateY(-10deg);
+}
+
+.continent.africa {
+    width: 35px;
+    height: 70px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateY(5deg);
+}
+
+.continent.oceania {
+    width: 30px;
+    height: 30px;
+    top: 65%;
+    left: 75%;
+    transform: translate(-50%, -50%) rotateY(-30deg);
+}
+
+/* 연결선 */
+.connection-lines {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform-style: preserve-3d;
+}
+
+.connection-line {
+    position: absolute;
+    width: 2px;
+    height: 150px;
+    background: linear-gradient(
+        to bottom,
+        rgba(37, 99, 235, 0.6),
+        rgba(37, 99, 235, 0.2),
+        transparent
+    );
+    transform-origin: top center;
+    transform: translate3d(var(--x), var(--y), var(--z)) rotateX(90deg);
+    animation: pulseLine 2s ease-in-out infinite;
+    animation-delay: var(--delay);
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+@keyframes pulseLine {
+    0%, 100% {
+        opacity: 0.3;
+        transform: translate3d(var(--x), var(--y), var(--z)) rotateX(90deg) scaleY(0.5);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translate3d(var(--x), var(--y), var(--z)) rotateX(90deg) scaleY(1);
+    }
+}
+
+/* 위치 마커 */
+.location-marker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-style: preserve-3d;
+    transform: translate3d(var(--x), var(--y), var(--z));
+    animation: fadeInMarker 1s ease-out forwards;
+    animation-delay: var(--delay);
+    opacity: 0;
+}
+
+@keyframes fadeInMarker {
+    to {
+        opacity: 1;
+    }
+}
+
+.marker-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(37, 99, 235, 0.8);
+    position: relative;
+    z-index: 2;
+}
+
+.location-marker.large .marker-dot {
+    width: 10px;
+    height: 10px;
+    box-shadow: 0 0 16px rgba(37, 99, 235, 1);
+}
+
+.location-marker.small .marker-dot {
+    width: 6px;
+    height: 6px;
+}
+
+.marker-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(37, 99, 235, 0.6);
+    border-radius: 50%;
+    animation: pulseMarker 2s ease-in-out infinite;
+}
+
+.location-marker.large .marker-pulse {
+    width: 24px;
+    height: 24px;
+}
+
+.location-marker.small .marker-pulse {
+    width: 16px;
+    height: 16px;
+}
+
+@keyframes pulseMarker {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
+}
+
+/* 플로팅 정보 카드 */
+.globe-floating-cards {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.floating-info-card {
+    position: absolute;
+    background: white;
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    backdrop-filter: blur(10px);
+    animation: floatCard 4s ease-in-out infinite;
+    pointer-events: auto;
+    transition: all 0.3s ease;
+}
+
+.floating-info-card:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 12px 32px rgba(37, 99, 235, 0.25);
+}
+
+@keyframes floatCard {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-12px) rotate(1deg);
+    }
+}
+
+.card-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    animation: iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.card-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1.2;
+}
+
+.card-subtitle {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    line-height: 1.2;
+}
+
+.floating-info-card.card-1 {
+    top: 10%;
+    right: -10%;
+    animation-delay: 0s;
+}
+
+.floating-info-card.card-2 {
+    bottom: 20%;
+    left: -15%;
+    animation-delay: 1.5s;
+}
+
+.floating-info-card.card-3 {
+    top: 50%;
+    right: -5%;
+    animation-delay: 2.5s;
+    opacity: 0;
+    animation: fadeInFloat 1s ease-out 1s forwards, floatCard 4s ease-in-out infinite 2.5s;
+}
+
+@keyframes fadeInFloat {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+    .globe-wrapper {
+        width: 400px;
+        height: 400px;
+    }
+
+    .globe-grid,
+    .continents {
+        width: 170px;
+        height: 170px;
+    }
+
+    .floating-info-card {
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .floating-info-card.card-1 {
+        top: 5%;
+        right: -5%;
+    }
+
+    .floating-info-card.card-2 {
+        bottom: 15%;
+        left: -10%;
+    }
+
+    .floating-info-card.card-3 {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .globe-wrapper {
+        width: 300px;
+        height: 300px;
+    }
+
+    .globe-grid,
+    .continents {
+        width: 130px;
+        height: 130px;
+    }
+
+    .floating-info-card {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.75rem;
+    }
+
+    .card-icon {
+        font-size: 1.2rem;
+    }
+
+    .floating-info-card.card-1 {
+        top: 0;
+        right: 0;
+        max-width: 140px;
+    }
+
+    .floating-info-card.card-2 {
+        bottom: 0;
+        left: 0;
+        max-width: 140px;
+    }
+}
+

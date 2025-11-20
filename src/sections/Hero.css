@@ -1,0 +1,223 @@
+.hero {
+    position: relative;
+    min-height: 100vh;
+    padding: 140px 5% 100px;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-container {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header Section */
+.hero-header {
+    margin-bottom: 4rem;
+    text-align: left;
+}
+
+.hero-eyebrow {
+    font-size: 1.15rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.eyebrow-highlight {
+    color: var(--color-primary);
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 0.25rem;
+}
+
+.hero-headline {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--color-text);
+    letter-spacing: -0.02em;
+    word-break: keep-all;
+}
+
+.text-highlight {
+    position: relative;
+    display: inline-block;
+    color: var(--color-primary);
+}
+
+/* Grid Layout */
+.hero-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 1.5rem;
+    height: 520px;
+}
+
+.grid-card {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.grid-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Backgrounds */
+.card-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.6s ease;
+}
+
+.grid-card:hover .card-bg {
+    transform: scale(1.08);
+}
+
+/* 진한 파란색 그라디언트 배경 - 약간 더 밝게 조정 */
+.card-rinda .card-bg {
+    background: linear-gradient(135deg, #1E40AF 0%, #2563EB 100%);
+    background-image: radial-gradient(circle at 20% 80%, rgba(96, 165, 250, 0.4) 0%, transparent 60%),
+                      linear-gradient(135deg, #1E40AF 0%, #2563EB 100%);
+}
+
+.card-finance .card-bg {
+    background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);
+    background-image: radial-gradient(circle at 50% 50%, rgba(147, 197, 253, 0.3) 0%, transparent 60%),
+                      linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);
+}
+
+.card-contents .card-bg {
+    background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+    background-image: radial-gradient(circle at 80% 20%, rgba(147, 197, 253, 0.3) 0%, transparent 60%),
+                      linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+}
+
+/* Overlays - 텍스트 가독성을 위한 어두운 오버레이 강화 */
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.1) 100%);
+    z-index: 1;
+}
+
+/* Content - 모든 텍스트 순백색 & 더 명확하게 */
+.card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2.5rem;
+    z-index: 2;
+    color: #FFFFFF;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.grid-card:hover .card-content {
+    transform: translateY(-5px);
+}
+
+.card-subtitle {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 2rem;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    color: #FFFFFF;
+}
+
+.card-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    line-height: 1.1;
+    color: #FFFFFF;
+}
+
+.card-desc {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    font-weight: 400;
+    color: #FFFFFF;
+    word-break: keep-all;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero {
+        padding: 120px 2rem 80px;
+        height: auto;
+        min-height: auto;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 320px 320px;
+        height: auto;
+    }
+
+    .card-large {
+        grid-column: 1 / -1;
+    }
+    
+    .hero-headline {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 1rem;
+    }
+
+    .grid-card {
+        height: 300px;
+    }
+
+    .card-large {
+        height: 360px;
+    }
+
+    .hero-headline {
+        font-size: 2.25rem;
+    }
+
+    .hero-eyebrow {
+        font-size: 1rem;
+    }
+    
+    .card-content {
+        padding: 1.75rem;
+    }
+    
+    .card-title {
+        font-size: 1.75rem;
+    }
+}

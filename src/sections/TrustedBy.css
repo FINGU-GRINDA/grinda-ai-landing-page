@@ -1,0 +1,151 @@
+.trusted-section {
+    padding: 120px 0;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+    overflow: hidden;
+}
+
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Metrics Styles */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-bottom: 8rem;
+    position: relative;
+}
+
+.metric-card {
+    text-align: center;
+    padding: 2rem 1rem;
+    border-right: 1px solid #F1F5F9;
+}
+
+.metric-card:last-child {
+    border-right: none;
+}
+
+.metric-value {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.metric-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.metric-label {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.metric-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+/* Partners Styles */
+.partners-wrapper {
+    text-align: center;
+}
+
+.partners-title {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    margin-bottom: 3rem;
+    font-weight: 500;
+}
+
+.partners-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* 좌우 페이드 효과 */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.slide-track {
+    display: flex;
+    width: calc(200px * 20); /* 로고 개수 * 너비 * 2 */
+    animation: scroll 40s linear infinite;
+}
+
+.partner-logo {
+    width: 200px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: grayscale(100%);
+    opacity: 0.4;
+    transition: all 0.3s ease;
+}
+
+.partner-logo:hover {
+    filter: grayscale(0%);
+    opacity: 0.8;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #475569;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-200px * 10)); }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem 2rem;
+    }
+    
+    .metric-card {
+        border-right: none;
+        border-bottom: 1px solid #F1F5F9;
+        padding-bottom: 2rem;
+    }
+
+    .metric-card:nth-child(3),
+    .metric-card:nth-child(4) {
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .metric-card {
+        border-bottom: 1px solid #F1F5F9;
+        padding: 1.5rem 0;
+    }
+    
+    .metric-card:last-child {
+        border-bottom: none;
+    }
+    
+    .metric-value {
+        font-size: 3rem;
+    }
+}

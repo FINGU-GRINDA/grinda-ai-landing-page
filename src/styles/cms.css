@@ -1,0 +1,31 @@
+/* Insights Link in Navbar */
+/* 기존 Navbar.jsx에 링크가 없으므로 추가하지는 않지만, 전역 스타일 일부 보완 */
+
+/* Global Utility Classes for CMS Content */
+.content-editor {
+  min-height: 300px;
+}
+
+/* Admin Badge Colors */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Ensure page containers have enough padding */
+.page-container {
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Button Reset/Base */
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
